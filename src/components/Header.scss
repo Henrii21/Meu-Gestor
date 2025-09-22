@@ -1,0 +1,237 @@
+/* --- container principal do header --- */
+.app-header {
+  display: flex;
+  padding: 12px 20px;
+  border-bottom: 1px solid #C8CBD9;
+  height: var(--header-height);
+}
+
+/* ---------------- Left: avatar + saudação ---------------- */
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.greeting {
+  display: flex;
+  gap: 5px;
+}
+
+/* Avatar redondo */
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  background: #f5f5f7;
+  border: 2px solid #ffffff;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.avatar .initials {
+  font-weight: 600;
+  color: #5A67BA;
+  font-size: 14px;
+}
+
+/* Saudação em linha: "Olá, Nome" */
+.greeting-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hello-inline {
+  display: flex;
+  gap: 6px;
+}
+
+.hello {
+  font-size: 12px;
+  color: #1F384C;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0.5px;
+}
+
+.user-name {
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+  color: #1F384C;
+}
+
+/* ---------------- Center: busca (empurrada para a direita) ---------------- */
+/* header-center mantém fluxo normal; a busca é empurrada com margin-left:auto */
+.header-center {
+  flex:auto ;
+  display: flex;
+  align-items: center;
+}
+
+.search-wrapper {
+  width: 428px;
+  height: 32px;
+  display: flex;
+  background: #F6F6FB;
+  border-radius: 5px;
+  margin-left: auto; 
+  margin-right: 35px
+}
+
+/* input e botão dentro da search-wrapper */
+.search-input {
+  border: none;
+  background: transparent;
+  flex: 1;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: 0.5px;
+  opacity: 0.3;
+  color: #1F384C;
+}
+
+.search-input::placeholder {
+  color: var(--placeholder-color);
+}
+
+.search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search-button img {
+  width: 13.51px;
+  height: 11.81px;
+  display: block;
+}
+
+/* ---------------- Right: empresa + notificações ---------------- */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Company pill (fundo branco com círculo laranja atrás do ícone) */
+.company {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+  height: 44px;
+}
+
+.company-pill {
+  width: 32px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:#FFE6CC;
+  
+}
+
+/* imagem do burger (PNG com fundo transparente recomendado) */
+.company-burger {
+  width: 20px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.company-name {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 13px;
+  color: #1F384C;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 8px;
+}
+
+.chev-icon {
+  width: 10qx;
+  height: 10px;
+  display: inline-block;
+  opacity: 50%;
+  margin-left: 2px;
+  transform: translateY(1px);
+}
+
+/* ---------------- Notificação (sininho + badge) ---------------- */
+.notif {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.notif-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.notif-sign {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  height: 12px;
+}
+
+/* ---------------- Responsividade ---------------- */
+/* telas grandes: aumentar offset se necessário */
+@media (min-width: 1600px) {
+  :root { --search-margin-right: 120px; }
+}
+
+/* telas médias: reduzir margin-right e largura */
+@media (max-width: 1400px) {
+  :root { --search-margin-right: 60px; }
+  .search-wrapper {
+    width: min(640px, 58%);
+    min-width: 360px;
+  }
+}
+
+/* telas menores: diminuir ainda mais */
+@media (max-width: 1100px) {
+  :root { --search-margin-right: 30px; }
+  .search-wrapper {
+    width: min(520px, 55%);
+    min-width: 320px;
+  }
+}
+
+/* em telas pequenas esconda a busca (ajuste conforme necessário) */
+@media (max-width: 900px) {
+  .header-center { display: none; }
+  .user-name {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+}
